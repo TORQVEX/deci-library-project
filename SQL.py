@@ -40,10 +40,10 @@ queries = [
         "Question 4: Top 10 members with the most borrowed books",
         "Reasoning: We join the members and checkouts tables on member_id. We group by member_id and name, count total borrows, order them from highest to lowest, and apply a LIMIT of 10 to find the most active readers.",
         """
-        SELECT m.member_id, m.name, COUNT(c.checkout_id) AS total_borrows
+        SELECT m.member_id, COUNT(c.checkout_id) AS total_borrows
         FROM members m
         JOIN checkouts c ON m.member_id = c.member_id
-        GROUP BY m.member_id, m.name
+        GROUP BY m.member_id
         ORDER BY total_borrows DESC
         LIMIT 10;
         """
